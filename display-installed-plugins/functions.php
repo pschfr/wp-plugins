@@ -11,11 +11,17 @@
 function display_installed_plugins() {
 	$paths = array();
 	foreach(get_plugins() as $p_basename => $plugin) {
-		$paths[] = "{$plugin['Name']}: " . (is_plugin_active($p_basename) ? 'Active' : 'Disabled');
+		$paths[] = "<td style='font-weight:bold'>{$plugin['Name']}</td><td>" . (is_plugin_active($p_basename) ? 'Active</td>' : 'Disabled</td>');
 	}
-	echo "<li>&nbsp;</li><li>&nbsp;</li>\n";
-	echo "<li><strong>" . count(get_plugins()) . " Installed Plugins</strong></li><li>&nbsp;</li>\n";
-	echo "<li>" . implode('</li><li>', $paths) . "</li>\n";
-	echo "<li>&nbsp;</li><li>&nbsp;</li>\n";
+	echo "<h3>" . count(get_plugins()) . " Installed Plugins</h3>\n";
+	echo "<table><tbody>";
+	foreach($paths as $plugin) {
+		echo "<tr>" . $plugin . "</tr>\n";
+	}
+	echo "</tbody></table>";
 }
-add_action('dashboard_glance_items', 'display_installed_plugins');
+
+function add_widget() {
+	wp_add_dashboard_widget('installed_plugin_widget', 'Installed Plugins', 'display_installed_plugins');
+}
+add_action('wp_dashboard_setup', 'add_widget');
