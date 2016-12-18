@@ -1,15 +1,11 @@
 <?php
-/**
- * @package CPT_At_A_Glance
- * @version 1.0
- */
 /*
-Plugin Name: Custom Post Types at a Glance
-Plugin URI: https://github.com/pschfr/wp-plugins
-Description: Displays Custom Post Types in At a Glance widget in wp-admin
-Author: Paul Schaefer
-Version: 1.0
-Author URI: https://paulmakesthe.net/
+	Plugin Name: Custom Post Types at a Glance
+	Plugin URI: https://github.com/pschfr/wp-plugins
+	Description: Displays Custom Post Types in At a Glance widget in wp-admin
+	Version: 1.0
+	Author: Paul Schaefer
+	Author URI: https://paulmakesthe.net/
 */
 
 function cpt_at_a_glance() {

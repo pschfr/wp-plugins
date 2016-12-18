@@ -1,15 +1,11 @@
 <?php
-/**
- * @package Disable_WP_Emoji
- * @version 1.0
- */
 /*
-Plugin Name: Disable WP Emoji
-Plugin URI: https://github.com/pschfr/wp-plugins
-Description: Disables WordPress' custom emoji styles
-Author: Paul Schaefer
-Version: 1.0
-Author URI: https://paulmakesthe.net/
+	Plugin Name: Disable WP Emoji
+	Plugin URI: https://github.com/pschfr/wp-plugins
+	Description: Disables WordPress' custom emoji styles
+	Version: 1.0
+	Author: Paul Schaefer
+	Author URI: https://paulmakesthe.net/
 */
 
 function disable_wp_emojicons() {
