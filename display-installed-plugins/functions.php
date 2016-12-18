@@ -14,7 +14,8 @@ function display_installed_plugins() {
 		$paths[] = "{$plugin['Name']}: " . (is_plugin_active($p_basename) ? 'Active' : 'Disabled');
 	}
 	echo "<li>&nbsp;</li><li>&nbsp;</li>\n";
-	echo "<li><strong>Installed Plugins</strong></li><li>&nbsp;</li>\n";
+	echo "<li><strong>" . count(get_plugins()) . " Installed Plugins</strong></li><li>&nbsp;</li>\n";
 	echo "<li>" . implode('</li><li>', $paths) . "</li>\n";
+	echo "<li>&nbsp;</li><li>&nbsp;</li>\n";
 }
 add_action('dashboard_glance_items', 'display_installed_plugins');
