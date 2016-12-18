@@ -13,7 +13,7 @@ function display_installed_plugins() {
 	foreach(get_plugins() as $p_basename => $plugin) {
 		$paths[] = "<td style='font-weight:bold'>{$plugin['Name']}</td><td>" . (is_plugin_active($p_basename) ? 'Active</td>' : 'Disabled</td>');
 	}
-	echo "<h3>" . count(get_plugins()) . " Installed Plugins</h3>\n";
+	echo "<h3><a href='" . admin_url('plugins.php') . "'>" . count(get_plugins()) . " Installed Plugins</a></h3>\n";
 	echo "<table><tbody>";
 	foreach($paths as $plugin) {
 		echo "<tr>" . $plugin . "</tr>\n";
