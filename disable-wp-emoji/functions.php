@@ -6,6 +6,7 @@
 	Version: 1.0
 	Author: Paul Schaefer
 	Author URI: https://paulmakesthe.net/
+	License: GPLv3
 */
 
 function disable_wp_emojicons() {
