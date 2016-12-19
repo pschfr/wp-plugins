@@ -11,14 +11,14 @@
 function display_installed_plugins() {
 	$paths = array();
 	foreach(get_plugins() as $p_basename => $plugin) {
-		$paths[] = "<td style='font-weight:bold'>{$plugin['Name']}</td><td>" . (is_plugin_active($p_basename) ? 'Active</td>' : 'Disabled</td>');
+		$paths[] = "<td style='font-weight:bold'>{$plugin['Name']}</td><td style='text-align: right'>" . (is_plugin_active($p_basename) ? '<span style="color:green">Active</span></td>' : '<span style="color:red">Disabled</span></td>');
 	}
-	echo "<h3><a href='" . admin_url('plugins.php') . "'>" . count(get_plugins()) . " Installed Plugins</a></h3>\n";
-	echo "<table><tbody>";
+	echo "<table style='width: 100%'><tbody>";
 	foreach($paths as $plugin) {
 		echo "<tr>" . $plugin . "</tr>\n";
 	}
 	echo "</tbody></table>";
+	echo "<p><a href='" . admin_url('plugins.php') . "'>View all Installed Plugins (" . count(get_plugins()) . ")</a></p>\n";
 }
 
 function add_widget() {
