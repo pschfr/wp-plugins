@@ -11,7 +11,7 @@
 function display_installed_plugins() {
 	$paths = array();
 	foreach(get_plugins() as $p_basename => $plugin) {
-		$paths[] = "<td style='font-weight:bold'>{$plugin['Name']}</td><td style='text-align: right'>" . (is_plugin_active($p_basename) ? '<span style="color:green">Active</span></td>' : '<span style="color:red">Disabled</span></td>');
+		$paths[] = "<td><strong>{$plugin['Name']}</strong> {$plugin['Version']}</td><td style='text-align: right'>" . (is_plugin_active($p_basename) ? '<span style="color:green">Active</span></td>' : '<span style="color:red">Disabled</span></td>');
 	}
 	echo "<table style='width: 100%'><tbody>";
 	foreach($paths as $plugin) {
