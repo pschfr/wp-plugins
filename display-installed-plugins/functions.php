@@ -2,23 +2,38 @@
 /*
 	Plugin Name: Display Installed Plugins
 	Plugin URI: https://github.com/pschfr/wp-plugins
-	Description: Displays Installed Plugins in At a Glance widget in wp-admin
-	Version: 1.0
+	Description: Displays Installed Plugins in a widget in wp-admin
+	Version: 1.1
 	Author: Paul Schaefer
 	Author URI: https://paulmakesthe.net/
 	License: GPLv3
 */
 function display_installed_plugins() {
-	$paths = array();
-	foreach(get_plugins() as $p_basename => $plugin) {
-		$paths[] = "<td><strong>{$plugin['Name']}</strong> {$plugin['Version']}</td><td style='text-align: right'>" . (is_plugin_active($p_basename) ? '<span style="color:green">Active</span></td>' : '<span style="color:red">Disabled</span></td>');
-	}
+	$active = 0;
+	$disabled = 0;
 	echo "<table style='width: 100%'><tbody>";
-	foreach($paths as $plugin) {
-		echo "<tr>" . $plugin . "</tr>\n";
+
+	foreach(get_plugins() as $p_basename => $plugin) {
+		$paths  = "<tr>";
+		$paths .= "<td><strong>" . $plugin['Name'] . "</strong> " . $plugin['Version'] . "</td>";
+		$paths .= "<td style='text-align: right'>";
+
+		if (is_plugin_active($p_basename)) {
+			$paths .= '<a href="' . get_site_url() . '/wp-admin/plugins.php?action=deactivate&plugin=' . $p_basename . '&plugin_status=all&paged=1&s&_wpnonce=' . wp_create_nonce('deactivate') . '" style="color:green">Active</a>';
+			$active++;
+		} else {
+			$paths .= '<a href="' . get_site_url() . '/wp-admin/plugins.php?action=activate&plugin=' . $p_basename . '&plugin_status=all&paged=1&s&_wpnonce=' . wp_create_nonce('activate') . '" style="color:red">Disabled</a>';
+			$disabled++;
+		}
+
+		$paths .= '</td>';
+		$paths .= "</tr>";
+		echo $paths;
 	}
+
 	echo "</tbody></table>";
-	echo "<p><a href='" . admin_url('plugins.php') . "'>View all Installed Plugins (" . count(get_plugins()) . ")</a></p>\n";
+
+	echo "<p><a href='" . admin_url('plugins.php') . "'>" . count(get_plugins()) . " installed plugins: " . $active . " active and " . $disabled . " disabled</a></p>\n";
 }
 
 function add_widget() {
