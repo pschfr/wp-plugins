@@ -28,6 +28,8 @@ function cpt_at_a_glance() {
 		$num = number_format_i18n($num_posts->publish);
 		$text = _n($post_type->labels->singular_name, $post_type->labels->name, intval($num_posts->publish));
 		if (current_user_can('edit_posts')) {
+			if ($post_type->menu_icon == '')
+				$post_type->menu_icon = 'dashicons-format-standard';
 			$output = '<a href="edit.php?post_type=' . $post_type->name . '">' . $num . ' ' . $text . '</a>';
 			echo '<li><div class="wp-menu-image dashicons-before ' . $post_type->menu_icon . '"></div>' . $output . '</li>';
 		}
