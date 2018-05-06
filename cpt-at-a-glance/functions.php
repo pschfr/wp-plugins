@@ -3,7 +3,7 @@
 	Plugin Name: Custom Post Types at a Glance
 	Plugin URI: https://github.com/pschfr/wp-plugins
 	Description: Displays Custom Post Types in At a Glance widget in wp-admin
-	Version: 1.0
+	Version: 1.1
 	Author: Paul Schaefer
 	Author URI: https://paulmakesthe.net/
 	License: GPLv3
